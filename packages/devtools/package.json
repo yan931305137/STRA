@@ -1,0 +1,27 @@
+{
+  "name": "@stra/devtools",
+  "version": "0.1.0",
+  "description": "STRA - DevTools UI: tree / signal / action inspector",
+  "private": true,
+  "scripts": {
+    "dev": "next dev --port 0",
+    "build": "next build",
+    "start": "next start",
+    "ts-check": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@stra/types": "workspace:*",
+    "@stra/core": "workspace:*",
+    "next": "^15",
+    "react": "^19",
+    "react-dom": "^19"
+  },
+  "devDependencies": {
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "typescript": "^5",
+    "tailwindcss": "^4",
+    "@tailwindcss/postcss": "^4"
+  },
+  "license": "MIT"
+}

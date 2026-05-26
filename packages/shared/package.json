@@ -1,0 +1,41 @@
+{
+  "name": "@stra/shared",
+  "version": "0.1.0",
+  "description": "STRA - Shared utilities umbrella: re-exports from shared-core, shared-node, shared-web",
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.js"
+    },
+    "./core": {
+      "types": "./dist/core.d.ts",
+      "import": "./dist/core.mjs",
+      "require": "./dist/core.js"
+    },
+    "./node": {
+      "types": "./dist/node.d.ts",
+      "import": "./dist/node.mjs",
+      "require": "./dist/node.js"
+    }
+  },
+  "files": ["dist"],
+  "scripts": {
+    "build": "tsup",
+    "dev": "tsup --watch",
+    "ts-check": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@stra/shared-core": "workspace:*",
+    "@stra/shared-node": "workspace:*",
+    "@stra/shared-web": "workspace:*"
+  },
+  "devDependencies": {
+    "tsup": "^8.3.5",
+    "typescript": "^5"
+  },
+  "license": "MIT"
+}

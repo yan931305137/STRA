@@ -1,0 +1,32 @@
+{
+  "name": "@stra/hmr",
+  "version": "0.1.0",
+  "description": "STRA - Hot module replacement: ws + patch + accept",
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.js"
+    }
+  },
+  "files": ["dist", "PUBLIC_API.md"],
+  "scripts": {
+    "build": "tsup",
+    "dev": "tsup --watch",
+    "ts-check": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@stra/shared-core": "workspace:*",
+    "@stra/module-graph": "workspace:*",
+    "ws": "^8.18.0"
+  },
+  "devDependencies": {
+    "@types/ws": "^8.5.14",
+    "tsup": "^8.3.5",
+    "typescript": "^5"
+  },
+  "license": "MIT"
+}

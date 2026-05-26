@@ -1,0 +1,27 @@
+{
+  "name": "@stra/starter",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "license": "MIT",
+  "description": "STRA Starter — scaffolded by stra CLI",
+  "scripts": {
+    "dev": "vite --port 5000",
+    "build": "tsc -b && vite build",
+    "preview": "vite preview",
+    "ts-check": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@stra/core": "workspace:*",
+    "@stra/react": "workspace:*",
+    "react": "^19",
+    "react-dom": "^19"
+  },
+  "devDependencies": {
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "@vitejs/plugin-react": "^4",
+    "typescript": "^5",
+    "vite": "^6"
+  }
+}

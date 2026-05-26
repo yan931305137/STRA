@@ -1,0 +1,9 @@
+{
+  "extends": "../../../tsconfig.base.json",
+  "compilerOptions": {
+    "outDir": "./dist",
+    "rootDir": "./src",
+    "paths": {"@stra/a11y": ["../a11y/dist"],"@stra/agent": ["../agent/dist"],"@stra/ai-action": ["../ai-action/dist"],"@stra/ai-layout": ["../ai-layout/dist"],"@stra/ai-sdk": ["../ai-sdk/dist"],"@stra/analytics": ["../analytics/dist"],"@stra/causality": ["../causality/dist"],"@stra/cli": ["../cli/dist"],"@stra/compiler-ai": ["../compiler-ai/dist"],"@stra/compiler": ["../compiler/dist"],"@stra/copilot": ["../copilot/dist"],"@stra/create-app": ["../create-app/dist"],"@stra/devtools": ["../devtools/dist"],"@stra/diff": ["../diff/dist"],"@stra/dom": ["../dom/dist"],"@stra/dsl": ["../dsl/dist"],"@stra/explain": ["../explain/dist"],"@stra/figma": ["../figma/dist"],"@stra/fs": ["../fs/dist"],"@stra/graph": ["../graph/dist"],"@stra/inspect": ["../inspect/dist"],"@stra/next": ["../next/dist"],"@stra/nl-builder": ["../nl-builder/dist"],"@stra/persistence": ["../persistence/dist"],"@stra/prompt-runtime": ["../prompt-runtime/dist"],"@stra/react-devtools": ["../react-devtools/dist"],"@stra/renderer-console": ["../renderer-console/dist"],"@stra/renderer-html": ["../renderer-html/dist"],"@stra/seo": ["../seo/dist"],"@stra/ssr": ["../ssr/dist"],"@stra/storybook": ["../storybook/dist"],"@stra/time-travel": ["../time-travel/dist"],"@stra/types": ["../types/dist"]}
+  },
+  "include": ["src"]
+}

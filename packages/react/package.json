@@ -1,0 +1,39 @@
+{
+  "name": "@stra/react",
+  "version": "0.1.0",
+  "description": "STRA - React hook integration: useSTRA / useSignal / render node",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.mjs",
+  "types": "./dist/types/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/types/index.d.ts",
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.cjs"
+    }
+  },
+  "files": ["dist"],
+  "scripts": {
+    "build": "vite build",
+    "dev": "vite build --watch",
+    "ts-check": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@stra/types": "workspace:*",
+    "@stra/core": "workspace:*"
+  },
+  "peerDependencies": {
+    "react": ">=18",
+    "react-dom": ">=18"
+  },
+  "devDependencies": {
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "react": "^19",
+    "react-dom": "^19",
+    "typescript": "^5",
+    "vite": "^6",
+    "vite-plugin-dts": "^4"
+  },
+  "license": "MIT"
+}

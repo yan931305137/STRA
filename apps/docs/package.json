@@ -1,0 +1,27 @@
+{
+  "name": "@stra/docs",
+  "version": "0.1.0",
+  "private": true,
+  "license": "MIT",
+  "scripts": {
+    "dev": "next dev --port 5001",
+    "build": "next build",
+    "start": "next start",
+    "ts-check": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@stra/types": "workspace:*",
+    "@stra/core": "workspace:*",
+    "@stra/react": "workspace:*",
+    "next": "^15",
+    "react": "^19",
+    "react-dom": "^19"
+  },
+  "devDependencies": {
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "typescript": "^5",
+    "@tailwindcss/postcss": "^4",
+    "tailwindcss": "^4"
+  }
+}

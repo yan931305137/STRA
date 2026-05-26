@@ -1,0 +1,13 @@
+import type { NextConfig } from 'next';
+
+const nextConfig: NextConfig = {
+  transpilePackages: [
+    '@stra/types',
+    '@stra/core',
+    '@stra/react',
+    '@stra/dom',
+    '@stra/renderer-html',
+  ],
+};
+
+export default nextConfig;

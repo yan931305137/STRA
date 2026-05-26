@@ -1,0 +1,63 @@
+# Dependencies
+node_modules/
+.pnp.*
+
+# Build outputs
+dist/
+.next/
+.turbo/
+.vercel/
+.parcel-cache/
+.cache/
+coverage/
+storybook-static/
+
+# Environment
+.env
+.env.*
+!.env.example
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Editor / IDE
+.vscode/
+.idea/
+*.iml
+*.swp
+*.swo
+
+# Debug
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Misc
+*.tsbuildinfo
+build/
+out/
+.rsbuild/
+
+# Testing
+*.lcov
+.nyc_output
+
+# Logs
+logs/
+*.log
+lerna-debug.log*
+
+# Runtime data
+pids
+
+# Benchmark output (regenerable)
+apps/ai-frontend-benchmark/benchmark-output/
+
+# Archive (not part of the build)
+_archive/
+
+# Platform-specific (not for open source)
+.coze
+.cozeproj/

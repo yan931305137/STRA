@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
+  <defs>
+    <linearGradient id="bg-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1a1a2e"/>
+      <stop offset="50%" stop-color="#111118"/>
+      <stop offset="100%" stop-color="#0a0a0f"/>
+    </linearGradient>
+    <linearGradient id="stra-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#6366f1"/>
+      <stop offset="45%" stop-color="#f0a500"/>
+      <stop offset="100%" stop-color="#00b894"/>
+    </linearGradient>
+  </defs>
+  <rect width="64" height="64" rx="14" fill="url(#bg-grad)"/>
+  <line x1="12" y1="32" x2="52" y2="32" stroke="#f0a500" stroke-width="0.5" opacity="0.3"/>
+  <path d="M14 22 C14 16, 22 13, 30 16 C34 17, 35 20, 33 24 C30 28, 16 26, 14 32 C12 38, 20 42, 28 40 C32 39, 33 36, 31 32" stroke="url(#stra-gradient)" stroke-width="2.2" stroke-linecap="round" fill="none"/>
+  <circle cx="12" cy="32" r="1.5" fill="#6366f1" opacity="0.8"/>
+  <circle cx="52" cy="32" r="1.5" fill="#00b894" opacity="0.8"/>
+  <circle cx="33" cy="32" r="1" fill="#f0a500" opacity="0.6"/>
+</svg>

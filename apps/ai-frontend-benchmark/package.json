@@ -1,0 +1,25 @@
+{
+  "name": "@stra/ai-frontend-benchmark",
+  "version": "0.1.0",
+  "private": true,
+  "description": "STRA AI Frontend Benchmark - Automated multi-framework evaluation system",
+  "license": "MIT",
+  "type": "module",
+  "scripts": {
+    "bench": "npx tsx src/index.ts",
+    "bench:run": "npx tsx src/index.ts --run",
+    "bench:report": "npx tsx src/index.ts --report-only",
+    "build": "npx tsup",
+    "dev": "npx tsx --watch src/index.ts",
+    "ts-check": "tsc --noEmit"
+  },
+  "dependencies": {
+    "playwright": "^1.52.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.15.0",
+    "tsup": "^8.4.0",
+    "tsx": "^4.19.0",
+    "typescript": "^5.8.0"
+  }
+}

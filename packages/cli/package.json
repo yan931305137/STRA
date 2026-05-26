@@ -1,0 +1,34 @@
+{
+  "name": "@stra/cli",
+  "version": "0.1.0",
+  "description": "STRA CLI — scaffold, develop, and build STRA projects",
+  "type": "module",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "bin": {
+    "stra": "./dist/index.mjs"
+  },
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.cjs"
+    }
+  },
+  "files": ["dist"],
+  "scripts": {
+    "build": "unbuild",
+    "dev": "unbuild --watch",
+    "ts-check": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@stra/types": "workspace:*",
+    "@stra/core": "workspace:*"
+  },
+  "devDependencies": {
+    "typescript": "^5",
+    "unbuild": "^3"
+  },
+  "license": "MIT"
+}

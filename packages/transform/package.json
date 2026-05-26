@@ -1,0 +1,30 @@
+{
+  "name": "@stra/transform",
+  "version": "0.1.0",
+  "description": "STRA - Code transformation engine: TS/JSX/SFC pipeline",
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.js"
+    }
+  },
+  "files": ["dist", "PUBLIC_API.md"],
+  "scripts": {
+    "build": "tsup",
+    "dev": "tsup --watch",
+    "ts-check": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@stra/shared-node": "workspace:*",
+    "@stra/plugin": "workspace:*"
+  },
+  "devDependencies": {
+    "tsup": "^8.3.5",
+    "typescript": "^5"
+  },
+  "license": "MIT"
+}

@@ -1,0 +1,31 @@
+{
+  "extends": "../../../tsconfig.base.json",
+  "compilerOptions": {
+    "jsx": "preserve",
+    "outDir": "./dist",
+    "paths": {
+      "@/*": [
+        "./src/*"
+      ],
+      "@stra/types": [
+        "../types/dist"
+      ],
+      "@stra/core": [
+        "../core/dist"
+      ]
+    },
+    "allowJs": true,
+    "noEmit": true,
+    "incremental": true,
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ]
+  },
+  "include": [
+    "next-env.d.ts",
+    "src",
+    ".next/types/**/*.ts"
+  ]
+}

@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login & Register</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+<body class="bg-gray-50 min-h-screen flex items-center justify-center p-4">
+    <div id="root"></div>
+    <script type="text/babel">
+    const { useState, useCallback } = React;
+
+    function useInput(initialValue) {
+        const [value, setValue] = useState(initialValue);
+        const onChange = useCallback((e) => setValue(e.target.value), []);
+        return { value, onChange, setValue };
+    }
+
+    function Toast({ message, type, onClose }) {
+        if (!message) return null;
+        return (
+            <div className={`mb-4 p-3 rounded-lg text-sm flex justify-between items-center ${
+                type === 'success' ? 'bg-green-50 text-green-700 border border-green-200' :
+                'bg-red-50 text-red-700 border border-red-200'
+            }`}>
+                <span>{message}</span>
+                <button onClick={onClose} className="ml-2 text-current opacity-60 hover:opacity-100">&times;</button>
+            </div>
+        );
+    }
+
+    function LoginForm({ onSwitchTab }) {
+        const email = useInput('');
+        const password = useInput('');
+        const [errors, setErrors] = useState({});
+        const [loading, setLoading] = useState(false);
+        const [toast, setToast] = useState(null);
+
+        function validate() {
+            const errs = {};
+            if (!email.value.trim()) errs.email = 'Email is required';
+            else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value)) errs.email = 'Invalid email format';
+            if (!password.value) errs.password = 'Password is required';
+            else if (password.value.length < 8) errs.password = 'Password must be at least 8 characters';
+            return errs;
+        }
+
+        async function handleSubmit(e) {
+            e.preventDefault();
+            const errs = validate();
+            setErrors(errs);
+            if (Object.keys(errs).length > 0) return;
+
+            setLoading(true);
+            try {
+                await new Promise(r => setTimeout(r, 1500));
+                setToast({ message: 'Login successful!', type: 'success' });
+                email.setValue(''); password.setValue('');
+            } catch {
+                setToast({ message: 'Login failed. Please try again.', type: 'error' });
+            } finally {
+                setLoading(false);
+            }
+        }
+
+        return (
+            <form onSubmit={handleSubmit} data-testid="login-form">
+                <Toast {...toast} onClose={() => setToast(null)} />
+                <div className="mb-4">
+                    <label className="block text-sm font-medium text-gray-700 mb-1">Email</label>
+                    <input type="email" {...email} disabled={loading}
+                        className={`w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 ${
+                            errors.email ? 'border-red-500' : 'border-gray-300'
+                        }`} />
+                    {errors.email && <p className="mt-1 text-sm text-red-600 error">{errors.email}</p>}
+                </div>
+                <div className="mb-6">
+                    <label className="block text-sm font-medium text-gray-700 mb-1">Password</label>
+                    <input type="password" {...password} disabled={loading}
+                        className={`w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 ${
+                            errors.password ? 'border-red-500' : 'border-gray-300'
+                        }`} />
+                    {errors.password && <p className="mt-1 text-sm text-red-600 error">{errors.password}</p>}
+                </div>
+                <button type="submit" disabled={loading}
+                    className="w-full py-2 px-4 bg-blue-600 text-white rounded-lg hover:bg-blue-700 disabled:opacity-50 font-medium">
+                    {loading ? 'Logging in...' : 'Login'}
+                </button>
+                <p className="mt-4 text-center text-sm text-gray-500">
+                    <a href="#" className="text-blue-600 hover:underline">Forgot password?</a>
+                </p>
+                <p className="mt-2 text-center text-sm text-gray-500">
+                    Don't have an account?{' '}
+                    <button type="button" onClick={onSwitchTab} className="text-blue-600 hover:underline">Register</button>
+                </p>
+            </form>
+        );
+    }
+
+    function RegisterForm({ onSwitchTab }) {
+        const username = useInput('');
+        const email = useInput('');
+        const password = useInput('');
+        const confirmPassword = useInput('');
+        const [errors, setErrors] = useState({});
+        const [loading, setLoading] = useState(false);
+        const [toast, setToast] = useState(null);
+
+        function validate() {
+            const errs = {};
+            if (!username.value.trim()) errs.username = 'Username is required';
+            if (!email.value.trim()) errs.email = 'Email is required';
+            else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value)) errs.email = 'Invalid email format';
+            if (!password.value) errs.password = 'Password is required';
+            else if (password.value.length < 8) errs.password = 'Password must be at least 8 characters';
+            if (!confirmPassword.value) errs.confirmPassword = 'Please confirm password';
+            else if (password.value !== confirmPassword.value) errs.confirmPassword = 'Passwords do not match';
+            return errs;
+        }
+
+        async function handleSubmit(e) {
+            e.preventDefault();
+            const errs = validate();
+            setErrors(errs);
+            if (Object.keys(errs).length > 0) return;
+
+            setLoading(true);
+            try {
+                await new Promise(r => setTimeout(r, 1500));
+                setToast({ message: 'Registration successful!', type: 'success' });
+                username.setValue(''); email.setValue(''); password.setValue(''); confirmPassword.setValue('');
+            } catch {
+                setToast({ message: 'Registration failed. Please try again.', type: 'error' });
+            } finally {
+                setLoading(false);
+            }
+        }
+
+        return (
+            <form onSubmit={handleSubmit} data-testid="register-form">
+                <Toast {...toast} onClose={() => setToast(null)} />
+                <div className="mb-4">
+                    <label className="block text-sm font-medium text-gray-700 mb-1">Username</label>
+                    <input type="text" {...username} disabled={loading}
+                        className={`w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 ${
+                            errors.username ? 'border-red-500' : 'border-gray-300'
+                        }`} />
+                    {errors.username && <p className="mt-1 text-sm text-red-600 error">{errors.username}</p>}
+                </div>
+                <div className="mb-4">
+                    <label className="block text-sm font-medium text-gray-700 mb-1">Email</label>
+                    <input type="email" {...email} disabled={loading}
+                        className={`w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 ${
+                            errors.email ? 'border-red-500' : 'border-gray-300'
+                        }`} />
+                    {errors.email && <p className="mt-1 text-sm text-red-600 error">{errors.email}</p>}
+                </div>
+                <div className="mb-4">
+                    <label className="block text-sm font-medium text-gray-700 mb-1">Password</label>
+                    <input type="password" {...password} disabled={loading}
+                        className={`w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 ${
+                            errors.password ? 'border-red-500' : 'border-gray-300'
+                        }`} />
+                    {errors.password && <p className="mt-1 text-sm text-red-600 error">{errors.password}</p>}
+                </div>
+                <div className="mb-6">
+                    <label className="block text-sm font-medium text-gray-700 mb-1">Confirm Password</label>
+                    <input type="password" {...confirmPassword} disabled={loading}
+                        className={`w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 ${
+                            errors.confirmPassword ? 'border-red-500' : 'border-gray-300'
+                        }`} />
+                    {errors.confirmPassword && <p className="mt-1 text-sm text-red-600 error">{errors.confirmPassword}</p>}
+                </div>
+                <button type="submit" disabled={loading}
+                    className="w-full py-2 px-4 bg-blue-600 text-white rounded-lg hover:bg-blue-700 disabled:opacity-50 font-medium">
+                    {loading ? 'Creating account...' : 'Register'}
+                </button>
+                <p className="mt-4 text-center text-sm text-gray-500">
+                    Already have an account?{' '}
+                    <button type="button" onClick={onSwitchTab} className="text-blue-600 hover:underline">Login</button>
+                </p>
+            </form>
+        );
+    }
+
+    function App() {
+        const [activeTab, setActiveTab] = useState('login');
+
+        return (
+            <div className="w-full max-w-md mx-auto">
+                <div className="bg-white rounded-xl shadow-lg overflow-hidden">
+                    <div className="flex border-b">
+                        <button onClick={() => setActiveTab('login')}
+                            className={`flex-1 py-4 px-4 font-medium text-sm transition-colors focus:outline-none ${
+                                activeTab === 'login'
+                                    ? 'border-b-2 border-blue-600 text-blue-600'
+                                    : 'text-gray-500 hover:text-gray-700'
+                            }`}>
+                            Login
+                        </button>
+                        <button onClick={() => setActiveTab('register')}
+                            className={`flex-1 py-4 px-4 font-medium text-sm transition-colors focus:outline-none ${
+                                activeTab === 'register'
+                                    ? 'border-b-2 border-blue-600 text-blue-600'
+                                    : 'text-gray-500 hover:text-gray-700'
+                            }`}>
+                            Register
+                        </button>
+                    </div>
+                    <div className="p-6">
+                        {activeTab === 'login' ? (
+                            <LoginForm onSwitchTab={() => setActiveTab('register')} />
+                        ) : (
+                            <RegisterForm onSwitchTab={() => setActiveTab('login')} />
+                        )}
+                    </div>
+                </div>
+            </div>
+        );
+    }
+
+    ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+    </script>
+</body>
+</html>

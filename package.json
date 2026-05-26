@@ -1,0 +1,31 @@
+{
+  "name": "stra-monorepo",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "pnpm -C apps/playground dev",
+    "build": "bash ./scripts/build.sh",
+    "typecheck": "pnpm -r --stream typecheck",
+    "clean": "pnpm -r --stream clean",
+    "stra": "npx tsx packages/cli/src/index.ts",
+    "lint": "eslint",
+    "lint:all": "eslint . --quiet",
+    "ts-check": "tsc -p tsconfig.json",
+    "check-deps": "npx tsx scripts/check-deps.ts",
+    "validate": "pnpm run --parallel '/^(ts-check|lint:all)$/'",
+    "preinstall": "npx only-allow pnpm"
+  },
+  "devDependencies": {
+    "@types/node": "^20",
+    "eslint": "^9",
+    "only-allow": "^1.2.2",
+    "tsx": "^4.19.2",
+    "typescript": "^5"
+  },
+  "engines": {
+    "node": ">=18",
+    "pnpm": ">=9.0.0"
+  },
+  "packageManager": "pnpm@9.15.0"
+}

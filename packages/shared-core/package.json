@@ -1,0 +1,27 @@
+{
+  "name": "@stra/shared-core",
+  "version": "0.1.0",
+  "description": "STRA - Platform-agnostic shared utilities: logger, utils (works in Node.js + Browser)",
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.js"
+    }
+  },
+  "files": ["dist"],
+  "scripts": {
+    "build": "tsup",
+    "dev": "tsup --watch",
+    "ts-check": "tsc --noEmit"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "tsup": "^8.3.5",
+    "typescript": "^5"
+  },
+  "license": "MIT"
+}
